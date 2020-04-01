@@ -1,0 +1,38 @@
+
+body {
+  background-color: #031921;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 10px;
+}
+
+a {
+	transition: all .4s ease-in-out;
+	text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.redirect_link_back {
+    position: absolute;
+    margin-left: 3%;
+    margin-top: 5%;
+    background-color: #000000;
+    padding: 10px 10px;
+    border-radius: 25px;
+    color: white;
+    font-size: 25px;
+    font-family: "Times New Roman";
+    text-align: center;
+    word-wrap: normal;
+}

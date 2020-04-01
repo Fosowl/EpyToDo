@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="name" content="develloper">
+		<meta name="author" content="Martin">
+		<meta name="keywords" content="freelance">
+		<title>Covid 19 counter</title>
+		<link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Changa&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="../css/chart.css">
+		<link rel="stylesheet" href="../css/all.css">
+		<script src="https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="../script/shared_script.js"></script>
+	</head>
+	<body>
+		<div class="present">Sick Track</div>
+		<div class="backsquare">
+			<div class="country" id="country-id">
+				<h2>France</h2>
+				<img src="../assets/france.png" width="50%" height="50%">
+				<div class="canvas0">
+					<canvas id="canvas_circle" width="700%" height="400%"></canvas>
+				</div>
+				<p class="infect-percent">55%</p>
+				<p class="recover-percent">15%</p>
+			</div>
+			<div class="stat" id="stat-id">
+				<div class="recover-count">1740 Recovered.</div>
+				<div class="infect-count">34000 Infected.</div>
+			</div>
+		</div>
+	</body>
+		<script type="text/javascript">
+		let i = 0;
+		let pop_percent = 0.9;
+		let red_x = 467;
+		let red_y = 150;
+		let green_x = 430;
+		let green_y = 295;
+
+		function load_circle() {
+			var circle = document.getElementById("canvas_circle").getContext("2d");
+			var circle_2 = document.getElementById("canvas_circle").getContext("2d");
+
+			my_draw_circle(circle,red_x, red_y, pop_percent * (i / 100), "#ff3333", 70);
+			my_draw_circle(circle_2, green_x, green_y, pop_percent * (i / 100), "#004d1a", 45);
+			i += 3;
+			setTimeout(function() {
+				if (i < 100)
+					window.requestAnimationFrame(load_circle);
+    		}, 55);
+		}
+
+		function draw_line() {
+			var canvas = document.getElementById('canvas_circle');
+			if (canvas)
+			{
+				var context = canvas.getContext("2d");
+				context.strokeStyle = '#999999';
+				context.beginPath();
+				context.moveTo(255, 366);
+				context.lineTo(275, 366);
+				context.lineTo(green_x - 30, green_y + 20);
+				context.lineWidth = 5;
+				context.stroke();
+				context.moveTo(640, 37);
+				context.lineTo(610, 37);
+				context.lineTo(red_x + 90, red_y - 30);
+				context.lineWidth = 5;
+				context.stroke();			
+			}
+		}
+
+		function load_to_window() {
+			draw_line();
+			window.requestAnimationFrame(load_circle);
+		}
+		window.onload = load_to_window;
+		</script>
+</html>

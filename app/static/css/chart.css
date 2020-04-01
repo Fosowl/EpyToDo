@@ -1,0 +1,117 @@
+
+
+hr {
+  height: 30px;
+  width: 5200px;
+  margin: -0.5em 0;
+  position: absolute;
+  padding: 0;
+  color: #E8A149;
+  background-color: #E8A149;
+  border: 0;
+}
+
+body {
+  background-image: url('../assets/earth.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.present {
+    position: absolute;
+	margin-top: 10%;
+    color: #ffdd99;
+    letter-spacing: 7px;
+    margin-left: 42%;
+	font-size: 65px;
+    font-family: 'Teko', sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.backsquare {
+    width: 80%;
+    height: 65%;
+    position: absolute;
+    overflow: hidden;
+    transform: translate(0%, 0%);
+    background: rgba(11, 10, 20, .96);
+    top: 30%;
+    left: 10%;
+}
+
+.country {
+    color: #999999;
+    font-family: 'Changa', sans-serif;
+    font-size: 30px;
+    margin-left: 5%;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.canvas1 {
+    margin-top: -250px;
+}
+
+.country img {
+    margin-left: 0%;
+    margin-top: -3%;
+}
+
+.stat {
+    margin-left: 9%;
+    font-family: 'Permanent Marker', cursive;
+}
+
+#line_canvas {
+    margin-top: -35%;
+}
+
+.canvas0 {
+    position: absolute;
+    margin-left: 2%;
+    margin-top: -45%; 
+}
+
+.infect-percent {
+    position: absolute;
+    margin-left: 488px;
+    margin-top: -340px; 
+}
+
+.recover-percent {
+    position: absolute;
+    margin-left: 450px;
+    margin-top: -195px; 
+}
+
+.infect-count {
+    margin-top: -450px;
+    margin-left: 640px;
+    color: #ff3333;
+    position: absolute;
+    font-size: 20px;
+}
+
+.recover-count {
+    margin-top: -120px;
+    margin-left: 70px;
+    position: absolute;
+    color: #004d1a;
+    font-size: 20px;
+}
+
+@keyframes toggle {
+    from {
+        opacity:0;
+    }
+
+    15% {
+        opacity:1;
+    }
+
+    to {
+        opacity:0;
+    }
+}
