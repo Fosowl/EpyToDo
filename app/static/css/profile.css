@@ -1,0 +1,170 @@
+
+
+hr {
+  height: 30px;
+  width: 5200px;
+  margin: -0.5em 0;
+  position: absolute;
+  padding: 0;
+  color: #E8A149;
+  background-color: #E8A149;
+  border: 0;
+}
+
+body {
+  background-image: url('../assets/earth.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.present {
+    position: absolute;
+	margin-top: 10%;
+    color: #ffdd99;
+    letter-spacing: 7px;
+    margin-left: 46%;
+	font-size: 65px;
+    font-family: 'Teko', sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.backsquare {
+    width: 80%;
+    height: 65%;
+    position: absolute;
+    overflow: hidden;
+    transform: translate(0%, 0%);
+    background: rgba(11, 10, 20, .96);
+    top: 30%;
+    left: 10%;
+}
+
+.country {
+    color: #999999;
+    font-family: 'Changa', sans-serif;
+    font-size: 30px;
+    margin-left: 5%;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.canvas1 {
+    margin-top: -250px;
+}
+
+.country img {
+    margin-left: 0%;
+    margin-top: -3%;
+}
+
+.stat {
+    margin-left: 9%;
+    font-family: 'Permanent Marker', cursive;
+}
+
+#line_canvas {
+    margin-top: -35%;
+}
+
+.canvas0 {
+    position: absolute;
+    margin-left: 2%;
+    margin-top: -45%; 
+}
+
+.profile_icon {
+    position: absolute;
+    margin-left: 49%;
+    margin-top: 18%;
+}
+
+.status_picker {
+    width: 100%;
+    display: inline-block;
+    position: absolute;
+    margin-left: 20%;
+    margin-top: 35%;
+    color: #ffdd99;
+    font-size: 10px;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.status_text {
+    display: inline-block;
+    position: absolute;
+    margin-left: 18%;
+    margin-top: 30%;
+    color: #ffdd99;
+    font-size: 16px;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.status_picker p {
+    margin-top: -30px;
+    margin-left: -15px;
+}
+
+.begin_picker {
+    justify-content: space-between;
+    position: absolute;
+    margin-left: 40%;
+    margin-top: 40%;
+    color: #ffdd99;
+    font-size: 14px;
+    display: flex;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.begin_picker h1 {
+    margin-right: 20px;
+}
+
+.end_picker {
+    justify-content: space-between;
+    position: absolute;
+    margin-left: 40%;
+    margin-top: 45%;
+    color: #ffdd99;
+    font-size: 14px;
+    display: flex;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.end_picker h1 {
+    margin-right: 20px;
+}
+
+[type="date"] {
+  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+input {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 3px 5px;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+  width: 190px;
+}
+
+@keyframes toggle {
+    from {
+        opacity:0;
+    }
+
+    15% {
+        opacity:1;
+    }
+
+    to {
+        opacity:0;
+    }
+}
