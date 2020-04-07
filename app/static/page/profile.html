@@ -14,13 +14,15 @@
 		<link rel="stylesheet" href="../css/profile.css">
 		<link rel="stylesheet" href="../css/all.css">
 		<script src="https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		<script src="../script/shared_script.js"></script>
 	</head>
 	<body>
 		<div class="present">Profile</div>
-		<a class="btn_page_switch" href="../../templates/index.html">Login Page</a>
+		<a class="btn_page_switch" href="../index.html">Login Page</a>
 		<img src="../assets/profile.png" class="profile_icon">
+		<div id="name">{{Name}}</div>
 		<style type="text/css">
 			#datepicker {
 				width: 180; margin: 0 20px 20px 20px;
@@ -29,38 +31,219 @@
 				cursor: pointer;
 			}
 		</style>
-		<h1 class="status_text">Infection status :</h1>
-		<div class="status_picker">
-  			<input type="radio" id="no" name="status" value="no">
-  			<p style="font-size: 19px;">Not sick</p>
-  			<br>
-  			<br>
-  			<input type="radio" id="yes" name="status" value="infected">
-  			<p style="font-size: 19px;">Infected</p>
-  			<br>
-  			<br>
-  			<input type="radio" id="cured" name="status" value="cured">
-  			<p style="font-size: 19px;">Recovered</p>
+		<div class="selector_container">
+			<div class="back_select">
+				<h1></h1>
+			</div>
+			<div id="toggle_1">
+				<h1 class="status_text">Infection status : </h1>
+				<div class="status_picker">
+					<ul class="list">
+						<li class="list__item">
+			  			<input type="radio" id="no" name="status1" class="radio-btn">
+			  			<label for="no" class="label">Not sick!</label>
+			  			<canvas id="dot_canvas1" class="canvas_offset" height="30px" width="30px"></canvas>
+			  			</li>
+
+						<li class="list__item">
+			  			<input type="radio" id="yes" name="status2" class="radio-btn">
+			  			<label for="yes" class="label">infected!</label>
+			  			<canvas id="dot_canvas2" class="canvas_offset" height="30px" width="30px"></canvas>
+			  			</li>
+
+						<li class="list__item">
+			  			<input type="radio" id="past" name="status3" class="radio-btn">
+			  			<label for="pass" class="label">recovered!</label>
+			  			<canvas id="dot_canvas3" class="canvas_offset" height="30px" width="30px"></canvas>
+			  			</li>
+		  			</ul>
+				</div>
+				<div class="begin_picker">
+					<h1>Begin date :</h1>
+					<input type="date" name="begin" id="begin-id">
+				</div>
+				<div class="end_picker">
+					<h1>End date :</h1>
+					<input type="date" name="end" id="end-id">
+				</div>
+				<a href="#" class="toggle_button_right" onclick="toggle_element_2();">></a>
+			</div>
+			<div id="toggle_2">
+				<h1 class="status_text">Task : </h1>
+				<div class="status_picker">
+					<ul class="list">
+						<li class="list__item">
+			  			<input type="checkbox" id="task_1" name="task1" class="radio-btn">
+			  			<label for="no" class="label">Buy a mask</label>
+			  			<canvas id="dot_canvas1" class="canvas_offset" height="30px" width="30px"></canvas>
+			  			</li>
+
+						<li class="list__item">
+			  			<input type="checkbox" id="task_2" name="task2" class="radio-btn">
+			  			<label for="yes" class="label">get depisted</label>
+			  			<canvas id="dot_canvas2" class="canvas_offset" height="30px" width="30px"></canvas>
+			  			</li>
+
+						<li class="list__item">
+			  			<input type="checkbox" id="task_3" name="task3" class="radio-btn">
+			  			<label for="pass" class="label">stay home</label>
+			  			<canvas id="dot_canvas3" class="canvas_offset" height="30px" width="30px"></canvas>
+			  			</li>
+		  			</ul>
+				</div>
+				<a href="#" class="toggle_button_left" onclick="toggle_element_1();"><</a>
+			</div>
 		</div>
-		<div class="begin_picker">
-			<h1>Begin date :</h1>
-			<input type="date" name="begin" id="begin-id">
+		<div style="position: absolute; margin-left: 40%; margin-top: 60%">
+		<a href="#" class="rainbow-button" alt="Send" onclick="send_data();"></a>
 		</div>
-		<div class="end_picker">
-			<h1>End date :</h1>
-			<input type="date" name="begin" id="begin-id">
-		</div>
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
 	</body>
 		<script type="text/javascript">
-		$(function(){
-			$("#begin-id").datepicker({
-				autoclose: true,
-				todayHighlight: true
-			}).datepicker('update', new Date());
-		});
-		function load_to_window() {
-		}
+			username = 'Martin Legrand';
+			var status = 'notsick';
+			var begin_date;
+			var end_date;
+			var input;
+			var dot1canv = document.getElementById("dot_canvas1");
+			var dot2canv = document.getElementById("dot_canvas2");
+			var dot3canv = document.getElementById("dot_canvas3");
+			var dot1 = dot1canv.getContext("2d");
+			var dot2 = dot2canv.getContext("2d");
+			var dot3 = dot3canv.getContext("2d");
+			var task = {
+				"mask":["no"],
+				"depisted":["no"],
+				"home":["no"]
+			};
 
-		window.onload = load_to_window;
+			var update_vue = new Vue({
+				el: '#name',
+				data: {
+					Name: username,
+				}
+			})
+
+			function update_page() {
+				$(function(){
+					$("#begin-id").datepicker({
+						autoclose: true,
+						todayHighlight: true
+					}).datepicker('update', new Date());
+				});
+			}
+
+			document.getElementById("begin-id").addEventListener("change", function() {
+    			input = this.value;
+    			begin_date = new Date(input);
+   	 			console.log(input); //e.g. 2015-11-13
+    			console.log(begin_date); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
+			});
+
+			document.getElementById("end-id").addEventListener("change", function() {
+    			input = this.value;
+    			end_date = new Date(input);
+   	 			console.log(input); //e.g. 2015-11-13
+    			console.log(end_date); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
+			});
+
+			function toggle_element_2() {
+				document.getElementById('toggle_1').style.visibility = "hidden";
+				document.getElementById('toggle_2').style.visibility = "visible";
+			}
+
+			function toggle_element_1() {
+				document.getElementById('toggle_2').style.visibility = "hidden";
+				document.getElementById('toggle_1').style.visibility = "visible";
+			}
+
+			function update_checker() {
+				$(document).ready(function() {
+    				$("#no").change(
+      				function(){
+	        			if ($(this).is(':checked')) {
+		  					window.requestAnimationFrame(my_draw_circle(dot1, -10, 10, 1.0, '#5F9EA0', 7));
+		  					window.requestAnimationFrame(dot2.clearRect(0, 0, dot2canv.width, dot2canv.height));
+		  					window.requestAnimationFrame(dot3.clearRect(0, 0, dot3canv.width, dot3canv.height));
+		  					status = 'notsick';
+		  					console.log(status);
+	        			}
+   					});
+    				$("#yes").change(
+      				function(){
+	        			if ($(this).is(':checked')) {
+							window.requestAnimationFrame(my_draw_circle(dot2, -10, 10, 1.0, '#5F9EA0', 7));
+		  					window.requestAnimationFrame(dot1.clearRect(0, 0, dot1canv.width, dot1canv.height));
+		  					window.requestAnimationFrame(dot3.clearRect(0, 0, dot3canv.width, dot3canv.height));
+		  					status = 'sick';
+		  					console.log(status);
+	        			}
+   					});
+    				$("#past").change(
+      				function(){
+	        			if ($(this).is(':checked')) {
+		 					window.requestAnimationFrame(my_draw_circle(dot3, -10, 10, 1.0, '#5F9EA0', 7));
+	  						window.requestAnimationFrame(dot1.clearRect(0, 0, dot1canv.width, dot1canv.height));
+	  						window.requestAnimationFrame(dot2.clearRect(0, 0, dot2canv.width, dot2canv.height));
+	  						status = 'recover';
+	  						console.log(status);
+	        			}
+   					});
+
+
+    				$("#task_1").change(
+      				function(){
+	        			if ($(this).is(':checked')) {
+		  					my_draw_circle(dot1, -10, 10, 1.0, '#5F9EA0', 7);
+		  					dot2.clearRect(0, 0, dot2canv.width, dot2canv.height);
+		  					dot3.clearRect(0, 0, dot3canv.width, dot3canv.height);
+		  					task.mask[0] = 'yes';
+		   					task.home[0] = 'no';
+		  					task.depisted[0] = 'no';
+	        			}
+   					});
+    				$("#task_2").change(
+      				function(){
+	        			if ($(this).is(':checked')) {
+							my_draw_circle(dot2, -10, 10, 1.0, '#5F9EA0', 7);
+		  					dot1.clearRect(0, 0, dot1canv.width, dot1canv.height);
+		  					dot3.clearRect(0, 0, dot3canv.width, dot3canv.height);
+		  					task.depisted[0] = 'yes';
+		   					task.home[0] = 'no';
+		  					task.mask[0] = 'no';
+	        			}
+   					});
+    				$("#task_3").change(
+      				function(){
+	        			if ($(this).is(':checked')) {
+							my_draw_circle(dot3, -10, 10, 1.0, '#5F9EA0', 7);
+		  					dot1.clearRect(0, 0, dot1canv.width, dot1canv.height);
+		  					dot2.clearRect(0, 0, dot2canv.width, dot2canv.height);
+		  					task.home[0] = 'yes';
+		  					task.depisted[0] = 'no';
+		  					task.mask[0] = 'no';
+	        			}
+   					});
+  				});
+			}
+
+			function send_data() {
+
+			}
+
+			function load_to_window() {
+				if (status == 'notsick')
+					my_draw_circle(dot1, -10, 10, 1.0, '#5F9EA0', 7);
+				if (status == 'sick')
+					my_draw_circle(dot2, -10, 10, 1.0, '#5F9EA0', 7);
+				if (status == 'recover')
+					my_draw_circle(dot3, -10, 10, 1.0, '#5F9EA0', 7);
+				update_checker();
+				update_page();
+			}
+
+			window.onload = load_to_window;
 		</script>
 </html>

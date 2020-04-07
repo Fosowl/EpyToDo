@@ -22,10 +22,11 @@ body {
     position: absolute;
 	margin-top: 10%;
     color: #ffdd99;
-    letter-spacing: 7px;
-    margin-left: 46%;
-	font-size: 65px;
+    letter-spacing: 10px;
+    margin-left: 43%;
+	font-size: 60px;
     font-family: 'Teko', sans-serif;
+    text-decoration:underline;
     font-weight: bold;
     text-align: center;
 }
@@ -76,42 +77,16 @@ body {
 
 .profile_icon {
     position: absolute;
-    margin-left: 49%;
+    margin-left: 46%;
     margin-top: 18%;
-}
-
-.status_picker {
-    width: 100%;
-    display: inline-block;
-    position: absolute;
-    margin-left: 20%;
-    margin-top: 35%;
-    color: #ffdd99;
-    font-size: 10px;
-    font-family: 'Permanent Marker', cursive;
-}
-
-.status_text {
-    display: inline-block;
-    position: absolute;
-    margin-left: 18%;
-    margin-top: 30%;
-    color: #ffdd99;
-    font-size: 16px;
-    font-family: 'Permanent Marker', cursive;
-}
-
-.status_picker p {
-    margin-top: -30px;
-    margin-left: -15px;
 }
 
 .begin_picker {
     justify-content: space-between;
     position: absolute;
-    margin-left: 40%;
+    margin-left: 55%;
     margin-top: 40%;
-    color: #ffdd99;
+    color: #fff;
     font-size: 14px;
     display: flex;
     font-family: 'Permanent Marker', cursive;
@@ -124,9 +99,9 @@ body {
 .end_picker {
     justify-content: space-between;
     position: absolute;
-    margin-left: 40%;
+    margin-left: 55%;
     margin-top: 45%;
-    color: #ffdd99;
+    color: #fff;
     font-size: 14px;
     display: flex;
     font-family: 'Permanent Marker', cursive;
@@ -167,4 +142,170 @@ input {
     to {
         opacity:0;
     }
+}
+
+.selector_container {
+    margin-left: -7%;
+}
+
+#toggle_1 {
+    visibility: visible;
+}
+
+#toggle_2 {
+    visibility: hidden;
+}
+
+.back_select {
+    width: 60%;
+    height: 40%;
+    position: absolute;
+    margin-left: 28%;
+    margin-top: 30%;
+    background-color: rgba(25, 25, 25, .90);
+}
+
+.status_picker {
+    width: 100%;
+    display: inline-block;
+    position: absolute;
+    margin-left: 35%;
+    margin-top: 40%;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.status_text {
+    display: inline-block;
+    text-decoration:underline;
+    position: absolute;
+    margin-left: 35%;
+    margin-top: 35%;
+    letter-spacing: 3px;
+    color:  #5F9EA0;
+    font-size: 28px;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.list {
+    flex: 0 0 20rem;
+}
+
+.list__item {
+    position: relative;
+}
+
+.list__item:hover {
+    border: 0rem solid #ffdd99;
+    margin-right: 2rem;
+    background:  #5F9EA0;
+    max-width: 170px;
+}
+
+.radio-btn {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.radio-btn:hover {
+    margin-right: 2rem;
+    border: 0rem;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0;
+    color: #fff;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s linear;
+}
+
+.label::before {
+    display: inline-block;
+    content: "";
+    height: 1.125rem;
+    width: 1.125rem;
+    margin-right: 0.625rem;
+    border: 0.5rem solid #fff;
+    border-radius: 50%;
+    transition: all 0.25s linear;
+}
+
+
+.toggle_button_right {
+    position: absolute;
+    color: #fff;
+    font-size: 190px;
+    margin-left: 90%;
+    opacity: 0.8;
+    font-weight: bold;
+    margin-top: 37%;
+}
+
+.toggle_button_left {
+    position: absolute;
+    color: #fff;
+    font-size: 190px;
+    margin-left: 10%;
+    opacity: 0.8;
+    font-weight: bold;
+    margin-top: 37%;
+}
+
+
+.rainbow-button {
+  color: #fff;
+  width:calc(20vw + 6px);
+  height:calc(8vw + 6px);
+  background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+  border-radius:5px;
+  display:flex;
+  opacity: 0.7;
+  align-items:center;
+  justify-content:center;
+  text-transform:uppercase;
+  font-size:3vw;
+  font-weight:bold;
+}
+.rainbow-button:after {
+  content:attr(alt);
+  width:20vw;
+  height:8vw;
+  background-color:#191919;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.rainbow-button:hover {
+  animation:slidebg 2s linear infinite;
+}
+
+@keyframes slidebg {
+  to {
+    background-position:20vw;
+  }
+}
+
+.canvas_line {
+    position: absolute;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#name {
+    position: absolute;
+    margin-left: 56%;
+    margin-top: 20%;
+    color: #fff;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 22px;
+}
+
+.canvas_offset {
+    position: absolute;
+    margin-top: -49px;
+    margin-left: -3px; 
 }
