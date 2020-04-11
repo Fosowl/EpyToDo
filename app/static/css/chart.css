@@ -20,7 +20,7 @@ body {
 
 .present {
     position: absolute;
-	margin-top: 10%;
+	margin-top: 7%;
     color: #ffdd99;
     letter-spacing: 7px;
     margin-left: 42%;
@@ -32,12 +32,13 @@ body {
 
 .backsquare {
     width: 80%;
-    height: 65%;
+    height: 105%;
     position: absolute;
     overflow: hidden;
     transform: translate(0%, 0%);
     background: rgba(11, 10, 20, .96);
-    top: 30%;
+    top: 37%;
+    bottom: 5%;
     left: 10%;
 }
 
