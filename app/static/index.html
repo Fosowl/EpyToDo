@@ -15,7 +15,9 @@
 		<link rel="stylesheet" href="./css/all.css">
 		<script src="https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
 		<script src="./script/shared_script.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 	</head>
 	<body>
 		<div class="present">Sick Track</div>
@@ -28,22 +30,24 @@
 			});
 			text.start();
 			text.reveal(3000);
-		</script>
+		</script>f
 		<div class="connect-form">
 			<form method="post" action="" id="all-form">
 				<h1>Register</h1>
-				<input type="text" placeholder="Full name" class="input-box">
-				<input type="password" placeholder="Password" class="input-box">
-				<input type="password" placeholder="Confirm password" class="input-box" id="pop-element">
-				<input type="submit" href="#" placeholder="Send" class="input-submit">
+				<input type="text" placeholder="Full name" class="input-box" id="name" required>
+				<input type="password" placeholder="Password" class="input-box" id="password" required>
+				<input type="password" placeholder="Confirm password" class="input-box" id="pop-element" id="confirm" required>
+				<input type="submit" href="#" placeholder="Send" class="input-submit" onclick="check_input()">
 				<a class="button-sign" href="#" onclick="change_log_form()">Already have an account ?</a>
 			</form>
 		</div>
 		<a class="btn_page_switch" href="./page/chart.html">View Counter</a>
 	    <script type="text/javascript">
 		let count = 0;
+		let mode = 'register'
 		var elem = document.getElementById('all-form');
 		const confirm_pass = elem.children[3];
+
 		function change_log_form() {
 			if (count % 2 == 1) {
 				window.location.reload(false);
@@ -51,9 +55,43 @@
 			}
 			if (count % 2 == 0) {
 				elem.removeChild(confirm_pass);
+				mode = 'login'
 				document.body.innerHTML = document.body.innerHTML.replace('Register', 'Log in');
 				document.body.innerHTML = document.body.innerHTML.replace('Already have an account ?', 'Create an account');
 				count += 1;
+			}
+		}
+
+		const name = document.getElementById('name');
+		const password = document.getElementById('password');
+		const confirm = document.getElementById('confirm');
+		var json = $.getJSON("data.json");
+		const obj = JSON.parse(json);
+
+		function check_input() {
+			if (mode == 'register') {
+				check_register();
+			} else if (mode == 'login') {
+				check_login();
+			}
+		}
+
+		function check_register() {
+			console.Log(name.value);
+			if (name.lenght < 3)
+				alert('username must be at least 2 characters');
+			if (password.value.lenght < 5)
+				alert('password must be at least 5 characters long');
+			if (confirm.value.lenght < 5)
+				alert('password must be at least 5 characters long');
+			if (password.value != confirm.value)
+					alert('password and confirm password not matching');
+			alert('registation success');
+		}
+
+		function check_login() {
+			if (name.value == obj.login && password.value == obj.password) {
+				alert('success !');
 			}
 		}
 	</script>

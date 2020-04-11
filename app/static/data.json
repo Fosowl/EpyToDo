@@ -1,0 +1,9 @@
+{
+    "login": "martin",
+    "password": "1234",
+    "status": "infected",
+    "begin": "",
+    "task_mask": "yes",
+    "task_depisted": "yes",
+    "task_home": "no"
+}
