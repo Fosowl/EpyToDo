@@ -19,3 +19,19 @@
 			circle.lineWidth = 7;
 			circle.stroke();
 		}
+
+		function load_json() {
+			var json;
+			var file;
+			var requestURL = './data.json'
+			var request = new XMLHttpRequest;
+
+			request.open('GET', requestURL);
+			request.responseType = 'json';
+			request.send();
+			request.onload = function() {
+				var file = request.response;
+			}
+			json = JSON.parse(file);
+			return json;
+		}

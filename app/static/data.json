@@ -1,9 +1,24 @@
 {
-    "login": "martin",
-    "password": "1234",
-    "status": "infected",
-    "begin": "",
-    "task_mask": "yes",
-    "task_depisted": "yes",
-    "task_home": "no"
+    "user": [
+        {
+        "login": "martin",
+        "password": "1234",
+        "status": "infected",
+        "begin": "",
+        "end": "",
+        "task_mask": "yes",
+        "task_depisted": "yes",
+        "task_home": "no"
+        },
+        {
+        "login": "toto",
+        "password": "superpass",
+        "status": "clean",
+        "begin": "",
+        "end": "",
+        "task_mask": "no",
+        "task_depisted": "yes",
+        "task_home": "yes"
+        }
+    ]
 }

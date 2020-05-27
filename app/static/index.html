@@ -1,12 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="name" content="develloper">
-		<meta name="author" content="Martin">
-		<meta name="keywords" content="freelance">
 		<title>Covid 19 counter</title>
 		<link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Changa&display=swap" rel="stylesheet">
@@ -36,7 +34,8 @@
 				<h1>Register</h1>
 				<input type="text" placeholder="Full name" class="input-box" id="name" required>
 				<input type="password" placeholder="Password" class="input-box" id="password" required>
-				<input type="password" placeholder="Confirm password" class="input-box" id="pop-element" id="confirm" required>
+				<input type="password" placeholder="Confirm password" class="input-box" id="pop-element"
+				id="confirm" required>
 				<input type="submit" href="#" placeholder="Send" class="input-submit" onclick="check_input()">
 				<a class="button-sign" href="#" onclick="change_log_form()">Already have an account ?</a>
 			</form>
@@ -44,7 +43,7 @@
 		<a class="btn_page_switch" href="./page/chart.html">View Counter</a>
 	    <script type="text/javascript">
 		let count = 0;
-		let mode = 'register'
+		let mode = 'register';
 		var elem = document.getElementById('all-form');
 		const confirm_pass = elem.children[3];
 
@@ -57,7 +56,8 @@
 				elem.removeChild(confirm_pass);
 				mode = 'login'
 				document.body.innerHTML = document.body.innerHTML.replace('Register', 'Log in');
-				document.body.innerHTML = document.body.innerHTML.replace('Already have an account ?', 'Create an account');
+				document.body.innerHTML = document.body.innerHTML.replace('Already have an account ?'
+				, 'Create an account');
 				count += 1;
 			}
 		}
@@ -65,8 +65,8 @@
 		const name = document.getElementById('name');
 		const password = document.getElementById('password');
 		const confirm = document.getElementById('confirm');
-		var json = $.getJSON("data.json");
-		const obj = JSON.parse(json);
+		var obj = load_json();
+		console.log("obj : " + obj);
 
 		function check_input() {
 			if (mode == 'register') {
@@ -90,6 +90,8 @@
 		}
 
 		function check_login() {
+			console.log(name.value);
+			console.log(obj.login);
 			if (name.value == obj.login && password.value == obj.password) {
 				alert('success !');
 			}
