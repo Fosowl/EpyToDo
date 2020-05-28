@@ -2,7 +2,7 @@
 <html lang="en">
 <html>
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="name" content="develloper">
 		<meta name="author" content="Martin">
@@ -30,16 +30,16 @@
 			text.reveal(3000);
 		</script>
 		<div class="connect-form">
-			<form method="post" action="" id="all-form">
+			<form action="/register" method="POST" id="all-form" name="form_name" onsubmit="return validate_form()" class="log_in">
 				<h1>Register</h1>
-				<input type="text" placeholder="Full name" class="input-box">
-				<input type="password" placeholder="Password" class="input-box">
-				<input type="password" placeholder="Confirm password" class="input-box" id="pop-element">
-				<input type="submit" href="#" placeholder="Send" class="input-submit">
-				<a class="button-sign" href="#" onclick="change_log_form()">Already have an account ?</a>
+				<input type="text" placeholder="Full name" class="input-box" name="user_name" required>
+				<input type="password" placeholder="Password" class="input-box" name="user_password" required>
+				<input type="password" placeholder="Confirm password" class="input-box" id="pop-element" required>
+				<input type="submit" placeholder="Send" class="input-submit">
 			</form>
+			<a class="button-sign" href="#" onclick="change_log_form()">Already have an account ?</a>
 		</div>
-		<a class="btn_page_switch" href="../static/page/chart.html">View Counter</a>
+		<a class="btn_page_switch" href="/chart">View Counter</a>
 	    <script type="text/javascript">
 		let count = 0;
 		var elem = document.getElementById('all-form');
@@ -55,6 +55,12 @@
 				document.body.innerHTML = document.body.innerHTML.replace('Already have an account ?', 'Create an account');
 				count += 1;
 			}
+		}
+	</script>
+	<script>
+		function validate_form() {
+			var field = document.forms["form_name"]["user_name"]["user_password"].value;
+			document.getElementsByClassName("log_in").action = "/signin"
 		}
 	</script>
 	</body>
